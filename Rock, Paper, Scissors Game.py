@@ -1,5 +1,6 @@
 import random
 
+# This function will run the game until closed
 def RPSGame():
     userCount, myCount = 0, 0
     roundCount = 1
@@ -7,6 +8,7 @@ def RPSGame():
         print('*'*10, f'Rount {roundCount}', '*'*10)
         userGuess = input('Enter Rock, Paper, or Scissors or Q to Quit: ')
         myGuess = random.choice(['Rock', 'Paper', 'Scissors'])
+        # If-elif statements to check who won each round and to increment the score counters
         if userGuess == 'Q':
             print('Quitting........\n')
             break
@@ -40,9 +42,11 @@ def RPSGame():
         else:
             print('Invalid Input...Try Again\n')
         roundCount += 1
-    return userCount, myCount, roundCount
+    # This function returns both the player and the computer score
+    return userCount, myCount
 
-def endGame(playerScore, computerScore, rounds):
+# This fucntion uses the scores returned from the RPSGame() function and decides the winner
+def endGame(playerScore, computerScore):
     if playerScore == computerScore:
         print(f'It\'s a Tie ({playerScore}-{computerScore})')
     elif playerScore > computerScore:
@@ -50,5 +54,6 @@ def endGame(playerScore, computerScore, rounds):
     elif playerScore < computerScore:
         print(f'I Win ({computerScore}-{playerScore})')
   
-p, c, r = RPSGame()  
-endGame(p, c, r)
+# Tuple unpacking into variables p and c
+p, c, = RPSGame()  
+endGame(p, c)
